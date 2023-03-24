@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base
+{
+    body
+    {
+        @apply bg-[#18122B] text-[#d7d7d7] overflow-x-hidden;
+        font-family: 'Poppins';
+    }
+
+}

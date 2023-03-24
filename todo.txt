@@ -1,0 +1,65 @@
+Genres
+{
+
+
+}
+Application
+{
+    Features
+    {
+        Save songs
+
+    }
+    Navigation
+    {
+
+    }
+
+}
+Homepage
+{
+    Searchbar
+    Navbar
+    {
+        homepage,
+        artists,
+        songs
+        {
+
+        },
+        Collection of songs/artists,
+        Random Songs,
+
+    }
+    content
+    {
+        Newly added songs,
+        Featured songs,
+
+    }
+    Footer
+    {
+        Information
+        {
+
+        }
+        Links
+        {
+
+        }
+    }
+
+}
+Songs
+{
+    Title,
+    Artist,
+    Artist Website,
+    Artist Youtube Channel,
+    Youtube Video, (if no Youtube replace it with whatever else like bilibli)
+    Youtube iframe to the video,
+    Date when added to website,
+    Likes/Saves,
+
+
+}
