@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { stringify } from 'postcss';
 import { ApiService } from 'src/app/api/api.service';
+import { SongsService } from 'src/app/services/songs.service';
 
 @Component({
   selector: 'app-songs',
@@ -10,12 +11,12 @@ import { ApiService } from 'src/app/api/api.service';
 })
 export class SongsComponent implements OnInit {
 
-  constructor(private api: ApiService, public domSanitizer: DomSanitizer) { }
+  constructor(private api: ApiService, public domSanitizer: DomSanitizer, public SongsService: SongsService) { }
 
   songs: any[] = []
   randomSongs: boolean = false
   sortSongs: string = 'new'
-  newSongArray: any[] = []
+  collectionSongs: any[] = []
 
   ngOnInit(): void
   {
@@ -24,12 +25,6 @@ export class SongsComponent implements OnInit {
       {
         // assing the data
         this.songs = res
-
-      })
-    this.api.GetSongs().subscribe(res =>
-      {
-        // assing the data
-        this.newSongArray = res
 
       })
   }

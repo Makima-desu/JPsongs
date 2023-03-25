@@ -7,7 +7,10 @@ import { ApiService } from './api/api.service';
 })
 export class AppComponent 
 {
-  constructor(public api: ApiService) {}
+  constructor(public api: ApiService) 
+  {
+
+  }
   title = 'src';
 
   // @ts-ignore

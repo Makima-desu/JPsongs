@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArtistComponent } from './components/artist/artist.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { CollectionComponent } from './components/collection/collection.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -12,7 +13,7 @@ const routes: Routes =
   {path: "songs", component: SongsComponent},
   {path: "songs/:song", component: SongComponent},
   {path: "artists", component: ArtistsComponent},
-  // {path: "/artists/:artist", component: ArtistComponent},
+  {path: "artists/:artist", component: ArtistComponent},
   {path: "collection", component: CollectionComponent}
 
 ];

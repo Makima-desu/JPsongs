@@ -1,19 +1,17 @@
 <div class="select-none text-lg w-fit mx-auto">
     <!-- if new sort by newest -->
     <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'new'}" (click)="ReloadPage()" class="inline-block p-1 m-2 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">New</span>
-    <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesASC'}" (click)="SortSongs('likesASC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Less Popular</span>
+    <!-- <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesASC'}" (click)="SortSongs('likesASC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Less Popular</span> -->
     <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesDESC'}" (click)="SortSongs('likesDESC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Popular</span>
-    <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesDESC'}" (click)="SortSongs('likesDESC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Names Ascending</span>
-
 </div>
 <div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     <!-- function from song service to pass all the data when clicked -->
     <!-- or pass them in a query with url -->
     <!-- [routerLink]="['/songs/', song.title]" -->
     <div *ngFor="let song of songs; let index = index;" class="w-full p-2 h-fit rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
-        <div class="w-full flex items-center justify-center gap-2 pb-2 cursor-default text-center">
+        <div [routerLink]="['/songs/', song.title]" [queryParams]="{title: song.title}" class="w-full flex items-center justify-center gap-2 pb-2 cursor-pointer text-center">
             <!-- link to artist -->
-            <span class="text-lg min-[400px]:text-xl">{{song.artist}}</span>
+            <span [routerLink]="['/artists/', song.artist]" class="text-lg min-[400px]:text-xl cursor-pointer transition-all duration-200 hover:text-[#7e71aa]">{{song.artist}}</span>
             -
             <span class="text-base min-[400px]:text-lg md:text-xl">{{song.title}}</span>
         </div>
@@ -29,5 +27,4 @@
         </div>
     </div>
 </div>
-
 <!-- width="560" height="315" -->
