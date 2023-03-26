@@ -15,7 +15,7 @@ export class SongComponent implements OnInit {
   songs: any[]
   song: any
 
-  constructor(private title: Title, public api: ApiService, public SongsService: SongsService, private ActivatedRoute: ActivatedRoute, public domSanitizer: DomSanitizer, private router: Router, private location: Location) 
+  constructor(private title: Title, public api: ApiService, private ActivatedRoute: ActivatedRoute, public domSanitizer: DomSanitizer, private router: Router, private location: Location) 
   {
     this.api.GetSongs().subscribe(res =>
       {
@@ -44,7 +44,7 @@ export class SongComponent implements OnInit {
   ngOnInit(): void 
   {
 
-  
+    
   }
 
   Back()

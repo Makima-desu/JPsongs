@@ -1,1 +1,6 @@
-<p>artists works!</p>
+<div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div *ngFor="let artist of artists; let index = index" class="w-full p-2 h-fit rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
+        <img [src]="['data:image/png;base64', artist.image]" class="w-24 rounded-full">
+        <span>{{artist.title}}</span>
+    </div>
+</div>

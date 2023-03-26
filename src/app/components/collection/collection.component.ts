@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ApiService } from 'src/app/api/api.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api/api.service';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor(private api: ApiService, public domSanitizer: DomSanitizer) { }
+  constructor(private api: ApiService, public domSanitizer: DomSanitizer, private title: Title) { }
 
   songs: any
   collectionSongs: any[] = []
@@ -23,6 +23,7 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    this.title.setTitle('Collection')
     this.api.GetSongs().subscribe(res =>
       {
         this.songs = res

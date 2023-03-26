@@ -13,6 +13,7 @@ import { SongComponent } from './components/song/song.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { CollectionComponent } from './components/collection/collection.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { UploadArtistComponent } from './components/upload-artist/upload-artist.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ArtistComponent } from './components/artist/artist.component';
     SongComponent,
     DateAgoPipe,
     CollectionComponent,
-    ArtistComponent
+    ArtistComponent,
+    UploadArtistComponent
   ],
   imports: [
     BrowserModule,

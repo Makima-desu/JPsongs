@@ -20,6 +20,22 @@ export class ApiService
 
   }
 
+  InsertArtistData(artist: {})
+  {
+
+
+  }
+
+  UpdateArtistData(artist: {image?: String, title?: string, website?: string, channel?: string, spotify?: string, likes?: number, id: number})
+  {
+    this.http.post('http://localhost:3000/artists', artist).subscribe(res =>
+    {
+      console.log(res)
+
+    })
+
+  }
+
   InsertSongData(song: {title: string, artist: string, iframe: string, link: string, likes: number})
   {
     // not sure why, but having a subscribe sends the data to the api
@@ -31,7 +47,7 @@ export class ApiService
 
   }
   // for updating song data i.e title, band likes links
-  UpdateSongData(song: {title?: string, artist?: string, iframe?: string, link?: string, likes?: number, id: number})
+  UpdateSongData(song: {title?: string, artist?: string, iframe?: string, link?: string, spotify?: string, likes?: number, id: number})
   {
     this.http.post("http://localhost:3000/songs", song).subscribe(res =>
     {

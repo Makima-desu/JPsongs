@@ -1,7 +1,6 @@
 //@ts-nocheck
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { stringify } from 'postcss';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ApiService } from 'src/app/api/api.service';
 import { SongsService } from 'src/app/services/songs.service';
 
@@ -11,7 +10,7 @@ import { SongsService } from 'src/app/services/songs.service';
 })
 export class SongsComponent implements OnInit {
 
-  constructor(private api: ApiService, public domSanitizer: DomSanitizer, public SongsService: SongsService) { }
+  constructor(private api: ApiService, public domSanitizer: DomSanitizer, private title: Title) { }
 
   songs: any[] = []
   randomSongs: boolean = false
@@ -20,6 +19,7 @@ export class SongsComponent implements OnInit {
 
   ngOnInit(): void
   {
+    this.title.setTitle('Japanese Songs')
     // get the data from api
     this.api.GetSongs().subscribe(res =>
       {

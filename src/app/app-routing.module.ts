@@ -6,6 +6,7 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { SongComponent } from './components/song/song.component';
 import { SongsComponent } from './components/songs/songs.component';
+import { UploadArtistComponent } from './components/upload-artist/upload-artist.component';
 
 const routes: Routes = 
 [
@@ -14,7 +15,8 @@ const routes: Routes =
   {path: "songs/:song", component: SongComponent},
   {path: "artists", component: ArtistsComponent},
   {path: "artists/:artist", component: ArtistComponent},
-  {path: "collection", component: CollectionComponent}
+  {path: "collection", component: CollectionComponent},
+  {path: 'upload-artist', component: UploadArtistComponent}
 
 ];
 

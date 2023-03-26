@@ -12,7 +12,7 @@
     <div [routerLink]="['/songs/', song.title]" [queryParams]="{title: song.title, artist: song.artist, iframe: song.iframe, link: song.link, likes: song.likes, spotify: song.spotify, added: song.added, id: song.id}" *ngFor="let song of collectionSongs; let index = index;" class="w-full p-2 h-fit rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
         <div class="w-full flex items-center justify-center gap-2 font-bold pb-2 cursor-default text-center">
             <!-- link to artist -->
-            <span class="text-lg min-[400px]:text-xl">{{song.artist}}</span>
+            <span [routerLink]="['/artists/', song.artist]" class="text-lg min-[400px]:text-xl cursor-pointer transition-all duration-200 hover:text-[#7e71aa]">{{song.artist}}</span>
             -
             <span class="text-base min-[400px]:text-lg md:text-xl">{{song.title}}</span>
         </div>
