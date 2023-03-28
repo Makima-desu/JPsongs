@@ -103,7 +103,7 @@ export class SongComponent implements OnInit {
   IsSongInCollection(id: string): boolean
   {
     let collection: any[] = []
-    collection.push(localStorage.getItem('collection'))
+    collection.push(localStorage.getItem('songCollection'))
 
     collection.forEach(song =>
       {

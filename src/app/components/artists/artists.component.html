@@ -1,6 +1,28 @@
-<div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-    <div *ngFor="let artist of artists; let index = index" class="w-full p-2 h-fit rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
-        <img [src]="['data:image/png;base64', artist.image]" class="w-24 rounded-full">
-        <span>{{artist.title}}</span>
+<div class="select-none text-lg w-fit mx-auto">
+    <!-- if new sort by newest -->
+    <span [ngClass]="{'bg-[#eee]/20': sortArtists === 'new'}" (click)="ReloadPage()" class="inline-block p-1 m-2 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">New</span>
+    <!-- <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesASC'}" (click)="SortSongs('likesASC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Less Popular</span> -->
+    <span [ngClass]="{'bg-[#eee]/20': sortArtists === 'likesDESC'}" (click)="SortArtists('likesDESC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Popular</span>
+</div>
+<div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 min-[1200px]:grid-cols-3">
+    <div *ngFor="let artist of artists; let index = index" class="w-full p-2 flex flex-col min-[400px]:flex-row h-fit gap-2 rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
+        <img [routerLink]="['/artists/', artist.title]" [src]="['data:image/png;base64', artist.image]" class="cursor-pointer min-[400px]:w-32 rounded">
+        <div class="w-full flex flex-col gap-2">
+            <span [routerLink]="['/artists/', artist.title]" class="text-2xl text-center min-[400px]:text-left cursor-pointer">{{artist.title}}</span>
+            <div class="grid grid-cols-2 gap-2 text-center min-[800px]:flex">
+                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
+                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
+                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.spotify}}" *ngIf="artist.spotify !== null">Spotify</a>
+            </div>
+            <div class="flex justify-between w-full z-10">
+                <span [ngClass]="{'bg-[#eee]/20': IsArtistInCollection(artist.id)}" (click)="SaveToCollection(artist.id)" class="flex z-10 gap-1 font-bold items-center justify-center rounded-md border-2 border-[#eee]/20 p-1 select-none cursor-pointer hover:bg-[#eee]/20 transition-all duration-200">
+                    <svg [ngClass]="{'fill-red-500 text-transparent': IsArtistInCollection(artist.id)}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 transition-all duration-200">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                    <span>{{artist.likes}}</span>
+                </span>
+                <span class="select-none pt-2 text-center">{{artist.added | dateAgo}}</span>
+            </div>
+        </div>
     </div>
 </div>

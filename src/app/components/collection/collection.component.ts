@@ -28,19 +28,19 @@ export class CollectionComponent implements OnInit {
       {
         this.songs = res
 
-        let collection: any[] = []
-        collection.push(localStorage.getItem('collection'))
+        let songCollection: any[] = []
+        songCollection.push(localStorage.getItem('songCollection'))
 
-        collection.forEach(id =>
+        songCollection.forEach(id =>
           {
-            collection = id.split(',')
+            songCollection = id.split(',')
 
 
           })
         
         this.songs.forEach(song =>
           {
-            collection.forEach(id =>
+            songCollection.forEach(id =>
               {
                 if (song.id.toString() === id.toString())
                 {
@@ -59,39 +59,39 @@ export class CollectionComponent implements OnInit {
   SaveToCollection(id: string, likes: number)
   {
     // save id to localStorage
-    let collection: any[] = []
+    let songCollection: any[] = []
     // if there are no items in collection
     // assign the id to array and save it
-    if (localStorage.getItem('collection') === null || localStorage.getItem('collection') === "")
+    if (localStorage.getItem('songCollection') === null || localStorage.getItem('songCollection') === "")
     {
-      collection.push(id)
+      songCollection.push(id)
       this.api.UpdateSongData({likes: 1, id: id})
-      localStorage.setItem('collection', collection)
+      localStorage.setItem('songCollection', songCollection)
     }
-    else if (localStorage.getItem('collection') >= '')
+    else if (localStorage.getItem('songCollection') >= '')
     {
       // get the stored collection
-      collection.push(localStorage.getItem('collection'))
+      songCollection.push(localStorage.getItem('songCollection'))
       
-      collection.forEach(song =>
+      songCollection.forEach(song =>
         {
           // split the string into indexes
-          collection = song.split(',')
+          songCollection = song.split(',')
           // if id exists, remove it from collection
-          if (collection.indexOf(id.toString()) > -1)
+          if (songCollection.indexOf(id.toString()) > -1)
           {
-            let index = collection.indexOf(id.toString())
-            collection.splice(index, 1)
+            let index = songCollection.indexOf(id.toString())
+            songCollection.splice(index, 1)
             this.api.UpdateSongData({likes: -1, id: id})
-            localStorage.setItem('collection', collection) // update the storage
+            localStorage.setItem('songCollection', songCollection) // update the storage
 
           }
           // else if it doesnt exist add the id to storage
-          else if (collection.indexOf(id.toString() === -1))
+          else if (songCollection.indexOf(id.toString() === -1))
           {
-            collection.push(id.toString())
+            songCollection.push(id.toString())
             this.api.UpdateSongData({likes: 1, id: id})
-            localStorage.setItem('collection', collection)
+            localStorage.setItem('songCollection', songCollection)
 
           }
         })
@@ -105,16 +105,16 @@ export class CollectionComponent implements OnInit {
 
   IsSongInCollection(id: string): boolean
   {
-    let collection: any[] = []
-    collection.push(localStorage.getItem('collection'))
+    let songCollection: any[] = []
+    songCollection.push(localStorage.getItem('songCollection'))
 
-    collection.forEach(song =>
+    songCollection.forEach(song =>
       {
-        collection = song.split(',')
+        songCollection = song.split(',')
 
       })
 
-    if (collection.indexOf(id.toString()) > -1)
+    if (songCollection.indexOf(id.toString()) > -1)
     {
       return true
 
