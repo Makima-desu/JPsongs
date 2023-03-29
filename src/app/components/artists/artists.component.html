@@ -6,9 +6,9 @@
 </div>
 <div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 min-[1200px]:grid-cols-3">
     <div *ngFor="let artist of artists; let index = index" class="w-full p-2 flex flex-col min-[400px]:flex-row h-fit gap-2 rounded-md bg-[#393053] transition-all duration-200 border-2 border-[#635985]/10 hover:border-[#635985]">
-        <img [routerLink]="['/artists/', artist.title]" [src]="['data:image/png;base64', artist.image]" class="cursor-pointer min-[400px]:w-32 rounded">
+        <img [routerLink]="['/artists/', artist.title]" [queryParams]="{title: artist.title}" [src]="['data:image/png;base64', artist.image]" class="cursor-pointer min-[400px]:w-32 rounded">
         <div class="w-full flex flex-col gap-2">
-            <span [routerLink]="['/artists/', artist.title]" class="text-2xl text-center min-[400px]:text-left cursor-pointer">{{artist.title}}</span>
+            <span [routerLink]="['/artists/', artist.title]" [queryParams]="{title: artist.title}" class="text-2xl text-center min-[400px]:text-left cursor-pointer">{{artist.title}}</span>
             <div class="grid grid-cols-2 gap-2 text-center min-[800px]:flex">
                 <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
                 <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
