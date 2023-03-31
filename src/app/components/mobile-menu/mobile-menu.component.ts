@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mobile-menu',
@@ -6,9 +6,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileMenuComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private element: ElementRef) 
+  {
+
+  }
+
+  ngOnInit(): void 
+  {
+  
+  
   }
 
 }

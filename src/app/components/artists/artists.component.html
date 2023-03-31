@@ -9,10 +9,10 @@
         <img [routerLink]="['/artists/', artist.title]" [queryParams]="{title: artist.title}" [src]="['data:image/png;base64', artist.image]" class="cursor-pointer min-[400px]:w-32 rounded">
         <div class="w-full flex flex-col gap-2">
             <span [routerLink]="['/artists/', artist.title]" [queryParams]="{title: artist.title}" class="text-2xl text-center min-[400px]:text-left cursor-pointer">{{artist.title}}</span>
-            <div class="grid grid-cols-2 gap-2 text-center min-[800px]:flex">
-                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
-                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
-                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer" href="{{artist.spotify}}" *ngIf="artist.spotify !== null">Spotify</a>
+            <div class="grid grid-cols-2 gap-2 text-center min-[800px]:flex"> 
+                <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
+                <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
+                <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.spotify}}" *ngIf="artist.spotify !== null">Spotify</a>
             </div>
             <div class="flex justify-between w-full z-10">
                 <span [ngClass]="{'bg-[#eee]/20': IsArtistInCollection(artist.id)}" (click)="SaveToCollection(artist.id)" class="flex z-10 gap-1 font-bold items-center justify-center rounded-md border-2 border-[#eee]/20 p-1 select-none cursor-pointer hover:bg-[#eee]/20 transition-all duration-200">

@@ -12,12 +12,13 @@ export class AppComponent
 
   }
   title = 'src';
+  @ViewChild('menu') menu: any
+  @ViewChild('menuButton') menuButton: any
 
   // @ts-ignore
-  @ViewChild('topBar') topbar: ElementRef
 
   data: any
-  mobileMenu: boolean = false;
+  mobileMenu: boolean = true;
 
   ngOnInit()
   {
@@ -34,6 +35,32 @@ export class AppComponent
   add()
   {
     this.api.InsertSongData({title: "LEMONADE", artist: "Sawano Hiroyuki", iframe: "dGeaFc5oZqQ", link: "https://www.youtube.com/watch?v=dGeaFc5oZqQ", likes: 0})
+
+  }
+
+
+  @HostListener('document:click', ['$event', "$event.target "])
+  click(event: any, targetElement: HTMLElement)
+  {
+    if (!(this.menuButton.nativeElement.contains(targetElement)))
+    {
+      this.mobileMenu = false
+
+    }
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) 
+  {
+    // depending on the screen size, show or hide the sidebar
+    if (window.innerWidth > 620)
+    {
+      this.mobileMenu = false
+
+    }
+    else this.mobileMenu = true
+
 
   }
 

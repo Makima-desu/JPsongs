@@ -26,8 +26,8 @@
                     </svg>
                     <span>{{song.likes}}</span>
                 </span>
-                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-red-500/50 transition-all duration-200 cursor-pointer bg-red-500/30" *ngIf="song.link !== null" href="{{song.link}}">Youtube</a>
-                <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-emerald-500/50 transition-all duration-200 cursor-pointer bg-emerald-500/30" *ngIf="song.spotify !== null" [href]="['https://open.spotify.com/track/' + song.spotify + '?si=c0e95f2f2d1340d7']">Spotify</a>
+                <a target="_blank" class="p-1 rounded border-2 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer border-[#eee]/20" *ngIf="song.link !== null" href="{{song.link}}">Youtube</a>
+                <a target="_blank" class="p-1 rounded border-2 hover:bg-[#eee]/20 transition-all duration-200 cursor-pointer border-[#eee]/20" *ngIf="song.spotify !== null" [href]="['https://open.spotify.com/track/' + song.spotify + '?si=c0e95f2f2d1340d7']">Spotify</a>
                 <span class="p-1 rounded border-2 border-[#eee]/20">id: {{song.id}}</span>
             </div>
             <span class="select-none pt-2 text-center">{{song.added | dateAgo}}</span>

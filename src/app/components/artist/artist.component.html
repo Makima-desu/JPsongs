@@ -3,9 +3,9 @@
     <div class="tracking-wide text-center sm:items-start min-[400px]:text-left w-full rounded flex flex-col gap-2 p-4 bg-[#635985]/10 border-2 border-[#eee]/20">
         <span class="text-4xl">{{artist.title}}</span>
         <div class="grid min-[220px]:grid-cols-2 min-[400px]:grid-cols-3 min-[600px]:flex gap-2 text-base text-center">
-            <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-blue-300/50 transition-all duration-200 cursor-pointer bg-blue-300/20" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
-            <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-red-400/50 transition-all duration-200 cursor-pointer bg-red-400/30" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
-            <a target="_blank" class="p-1 rounded border-2 border-[#eee]/20 hover:bg-emerald-500/50 transition-all duration-200 cursor-pointer bg-emerald-500/30" href="{{artist.spotify}}" *ngIf="artist.spotify !== null">Spotify</a>
+            <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.website}}" *ngIf="artist.website !== null">Website</a>
+            <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.channel}}" *ngIf="artist.channel !== null">Youtube</a>
+            <a target="_blank" class="p-1 rounded border-2 transition-all duration-200 cursor-pointer border-[#eee]/20 hover:bg-[#eee]/20" href="{{artist.spotify}}" *ngIf="artist.spotify !== null">Spotify</a>
             <span class="p-1 rounded border-2 border-[#eee]/20">id: {{artist.id}}</span>
         </div>
         <div class="flex justify-between items-center w-full">

@@ -1,13 +1,13 @@
 <!-- Navigation -->
 <!-- bg-[#393053] -->
 <div class="h-screen">
-  <div class="flex flex-col select-none p-4 gap-4 w-full max-w-[1400px] mx-auto border-b rounded-xl border-[#393053] top-0 sticky bg-[#18122B]">
+  <div class="flex flex-col select-none p-4 gap-4 w-full z-10 max-w-[1400px] mx-auto border-b rounded-xl border-[#393053] top-0 sticky bg-[#18122B]">
     <div class="flex flex-col min-[620px]:flex-row gap-4 font-bold">
       <div class="flex items-center text-lg min-[620px]:text-2xl justify-around max-[420px]:w-full gap-4">
         <a routerLink="" class="group">
           <span class="bg-bottom bg-gradient-to-t group-hover:cursor-pointer from-white to-white bg-no-repeat bg-[length:0%_2px] group-hover:bg-[length:100%_2px] transition-all duration-200">JPSongs</span>
         </a>
-        <div (click)="mobileMenu ? mobileMenu = false : mobileMenu = true" class="min-[620px]:hidden hover:bg-[#eee]/20 rounded-full transition-all duration-200 cursor-pointer">
+        <div #menuButton (click)="mobileMenu ? mobileMenu = false : mobileMenu = true" class="min-[620px]:hidden hover:bg-[#eee]/20 rounded-full transition-all duration-200 cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-7">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
           </svg>
@@ -50,10 +50,9 @@
           Artists
         </span>
       </a>
-      <!-- <button (click)="add()">Insetrt</button> -->
     </div>
   </div>
-  <app-mobile-menu *ngIf="mobileMenu"></app-mobile-menu>
+  <app-mobile-menu #menu *ngIf="mobileMenu"></app-mobile-menu>
   <div class="w-full pt-4 lg:flex md:justify-center relative">
     <!-- Nav menu for bigger screen -->
     <router-outlet></router-outlet>

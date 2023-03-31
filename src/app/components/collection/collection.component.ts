@@ -14,7 +14,7 @@ export class CollectionComponent implements OnInit {
   songs: any
   collectionSongs: any[] = []
   artists: any
-  collectionArtists: any
+  collectionArtists: any[] = []
 
   songOptions: boolean = false
   sortSongs: boolean = false
@@ -53,10 +53,39 @@ export class CollectionComponent implements OnInit {
           })
 
       })
+    this.api.GetArtists().subscribe(res =>
+      {
+        this.artists = res
+        
+        let artistCollection: any[] = []
+
+        artistCollection.push(localStorage.getItem('artistCollection'))
+
+        artistCollection.forEach(artist =>
+          {
+            artistCollection = artist.split(',')
+
+          })
+
+        this.artists.forEach(artist =>
+          {
+            artistCollection.forEach(id =>
+              {
+                if (artist.id.toString() === id.toString())
+                {
+                  this.collectionArtists.push(artist)
+
+                }
+
+              })
+
+          })
+
+      })
   
   }
 
-  SaveToCollection(id: string, likes: number)
+  SaveSongToCollection(id: number)
   {
     // save id to localStorage
     let songCollection: any[] = []
@@ -115,6 +144,71 @@ export class CollectionComponent implements OnInit {
       })
 
     if (songCollection.indexOf(id.toString()) > -1)
+    {
+      return true
+
+    }
+    else return false
+
+  }
+
+  SaveArtistToCollection(id: number)
+  {
+    // save id to localStorage
+    let artistCollection: any[] = []
+    // if there are no items in collection
+    // assign the id to array and save it
+    if (localStorage.getItem('artistCollection') === null || localStorage.getItem('artistCollection') === "")
+    {
+      artistCollection.push(id)
+      this.api.UpdateArtistData({likes: 1, id: id})
+      localStorage.setItem('artistCollection', artistCollection)
+    }
+    else if (localStorage.getItem('artistCollection') >= '')
+    {
+      // get the stored collection
+      artistCollection.push(localStorage.getItem('artistCollection'))
+      
+      artistCollection.forEach(song =>
+        {
+          // split the string into indexes
+          artistCollection = song.split(',')
+          // if id exists, remove it from collection
+          if (artistCollection.indexOf(id.toString()) > -1)
+          {
+            let index = artistCollection.indexOf(id.toString())
+            artistCollection.splice(index, 1)
+            this.api.UpdateArtistData({likes: -1, id: id})
+            localStorage.setItem('artistCollection', artistCollection) // update the storage
+
+          }
+          // else if it doesnt exist add the id to storage
+          else if (artistCollection.indexOf(id.toString() === -1))
+          {
+            artistCollection.push(id.toString())
+            this.api.UpdateArtistData({likes: 1, id: id})
+            localStorage.setItem('artistCollection', artistCollection)
+
+          }
+        })
+
+
+    }
+
+  }
+
+  IsArtistInCollection(id: number): boolean
+  {
+    let artistCollection: any[] = []
+    artistCollection.push(localStorage.getItem('artistCollection'))
+
+    artistCollection.forEach(artist =>
+      {
+        artistCollection = artist.split(',')
+
+      })
+
+    if (artistCollection.indexOf(id.toString()) > -1)
     {
       return true
 

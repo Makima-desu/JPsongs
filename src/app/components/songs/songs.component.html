@@ -4,7 +4,7 @@
     <!-- <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesASC'}" (click)="SortSongs('likesASC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Less Popular</span> -->
     <span [ngClass]="{'bg-[#eee]/20': sortSongs === 'likesDESC'}" (click)="SortSongs('likesDESC')" class="inline-block m-2 p-1 px-4 transition-all duration-200 hover:bg-[#eee]/20 text-center rounded cursor-pointer">Popular</span>
 </div>
-<div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="w-full p-4 gap-4 grid grid-cols-1 min-[800px]:grid-cols-2 lg:grid-cols-3 min-[1350px]:grid-cols-4">
     <!-- function from song service to pass all the data when clicked -->
     <!-- or pass them in a query with url -->
     <!-- [routerLink]="['/songs/', song.title]" -->
