@@ -15,13 +15,31 @@ export class AppComponent
   @ViewChild('menu') menu: any
   @ViewChild('menuButton') menuButton: any
 
-  // @ts-ignore
 
   data: any
-  mobileMenu: boolean = true;
+  mobileMenu: boolean = false
+  searchMenu: boolean = true
+  artists: any[] = []
+  songs: any[] = []
+
+  searchText: string = ''
+  searchCategory: boolean = true
 
   ngOnInit()
   {
+    this.api.GetArtists().subscribe(res =>
+      {
+        // @ts-ignore
+        this.artists = res
+
+
+      })
+    this.api.GetSongs().subscribe(res =>
+      {
+        // @ts-ignore
+        this.songs = res
+
+      })
 
   }
 
@@ -59,8 +77,6 @@ export class AppComponent
       this.mobileMenu = false
 
     }
-    else this.mobileMenu = true
-
 
   }
 

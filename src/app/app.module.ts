@@ -14,6 +14,8 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { CollectionComponent } from './components/collection/collection.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { UploadArtistComponent } from './components/upload-artist/upload-artist.component';
+import { SearchSongsPipe } from './pipes/search-songs.pipe';
+import { SearchArtistsPipe } from './pipes/search-artists.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UploadArtistComponent } from './components/upload-artist/upload-artist.
     DateAgoPipe,
     CollectionComponent,
     ArtistComponent,
-    UploadArtistComponent
+    UploadArtistComponent,
+    SearchSongsPipe,
+    SearchArtistsPipe
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,24 @@
-<p>search-menu-popup works!</p>
+<div class="fixed bg-[#393053] border-2 border-[#eee]/20 rounded h-20 w-full z-20">
+    <div *ngIf="searchCategory">
+        <div *ngIf="(songs | searchSongs: searchText).length !== 0; else noSongs">
+            <div *ngFor="let song of songs | searchSongs: searchText">
+                <p>{{song.title}}</p>
+                <p>{{song.artist}}</p>
+            </div>
+        </div>
+        <ng-template #noSongs>
+            <span>No items found</span>
+        </ng-template>
+    </div>
+    <div *ngIf="!searchCategory">
+        <div *ngIf="(artists | searchSongs: searchText).length !== 0; else noArtists">
+            <div *ngFor="let artist of artists | searchSongs: searchText">
+                <p>{{artist.title}}</p>
+            </div>
+        </div>
+        <ng-template #noArtists>
+            <span>No artists found</span>
+        </ng-template>
+    </div>
+</div>
+<!-- divs for songs and artists -->
