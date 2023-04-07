@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
-import { SearchMenuPopupComponent } from './components/search-menu-popup/search-menu-popup.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { SongComponent } from './components/song/song.component';
@@ -22,7 +21,6 @@ import { SearchArtistsPipe } from './pipes/search-artists.pipe';
     AppComponent,
     HomepageComponent,
     MobileMenuComponent,
-    SearchMenuPopupComponent,
     SongsComponent,
     ArtistsComponent,
     SongComponent,
