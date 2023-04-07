@@ -1,5 +1,7 @@
+// @ts-nocheck
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from './api/api.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +9,21 @@ import { ApiService } from './api/api.service';
 })
 export class AppComponent 
 {
-  constructor(public api: ApiService) 
+  constructor(public api: ApiService, public domSanitizer: DomSanitizer) 
   {
 
   }
   title = 'src';
   @ViewChild('menu') menu: any
   @ViewChild('menuButton') menuButton: any
+  @ViewChild('searchbar') searchbar: any
+  @ViewChild('search') search: any
+  @ViewChild('searchInput') searchInput: any
 
 
   data: any
   mobileMenu: boolean = false
-  searchMenu: boolean = true
+  searchMenu: boolean = false
   artists: any[] = []
   songs: any[] = []
 
@@ -65,6 +70,11 @@ export class AppComponent
       this.mobileMenu = false
 
     }
+    if (!(this.search.nativeElement.contains(targetElement)) && !(this.searchbar.nativeElement.contains(targetElement)))
+    {
+      this.searchMenu = false
+
+    }
 
   }
 
@@ -77,6 +87,79 @@ export class AppComponent
       this.mobileMenu = false
 
     }
+
+  }
+
+  SearchInput(text: string)
+  {
+    this.searchText = text
+
+  }
+
+  SaveToCollection(id: string, likes: number)
+  {
+    // save id to localStorage
+    let collection: any[] = []
+    // if there are no items in collection
+    // assign the id to array and save it
+    if (localStorage.getItem('collection') === null || localStorage.getItem('collection') === "")
+    {
+      collection.push(id)
+      this.api.UpdateSongData({likes: 1, id: id})
+      localStorage.setItem('collection', collection)
+    }
+    else if (localStorage.getItem('collection') >= '')
+    {
+      // get the stored collection
+      collection.push(localStorage.getItem('collection'))
+      
+      collection.forEach(song =>
+        {
+          // split the string into indexes
+          collection = song.split(',')
+          // if id exists, remove it from collection
+          if (collection.indexOf(id.toString()) > -1)
+          {
+            let index = collection.indexOf(id.toString())
+            collection.splice(index, 1)
+            this.api.UpdateSongData({likes: -1, id: id})
+            localStorage.setItem('collection', collection) // update the storage
+
+          }
+          // else if it doesnt exist add the id to storage
+          else if (collection.indexOf(id.toString() === -1))
+          {
+            collection.push(id.toString())
+            this.api.UpdateSongData({likes: 1, id: id})
+            localStorage.setItem('collection', collection)
+
+          }
+        })
+
+      // ++likes in database
+      // check to see if value is already saved
+
+    }
+
+  }
+
+  IsSongInCollection(id: string): boolean
+  {
+    let collection: any[] = []
+    collection.push(localStorage.getItem('songCollection'))
+
+    collection.forEach(song =>
+      {
+        collection = song.split(',')
+
+      })
+
+    if (collection.indexOf(id.toString()) > -1)
+    {
+      return true
+
+    }
+    else return false
 
   }
 
